@@ -1,3 +1,6 @@
+"Implement K-Means clustering/ hierarchical clustering on sales _data _sample.csv dataset. Determine
+the number of clusters using the elbow method."
+
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
