@@ -18,15 +18,13 @@ learning_rate = 0.1
 max_iterations = 1000
 initial_x = 2
 # Run Gradient Descent to find the local minimum
-local_minimum, x_history = gradient_descent(learning_rate, max_iterations,␣
-↪initial_x)
+local_minimum, x_history = gradient_descent(learning_rate, max_iterations,initial_x)
 print(f"Local Minimum at x = {local_minimum}")
 # Plot the graph to visualize the convergence
 x_values = np.linspace(-10, 10, 400) # Generate x values for the graph
 y_values = (x_values + 3)**2 # Calculate corresponding y values
 plt.plot(x_values, y_values, label='y = (x + 3)^2', color='blue')
-plt.scatter(x_history, [(x + 3)**2 for x in x_history], label='Gradient Descent␣
-↪Path', color='red', marker='x')
+plt.scatter(x_history, [(x + 3)**2 for x in x_history], label='Gradient DescentPath', color='red', marker='x')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.legend()
