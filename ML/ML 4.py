@@ -2,30 +2,34 @@
 accuracy, error rate, precision and recall on the given dataset."
 
 
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score
+import numpy as np
+import matplotlib.pyplot as plt
+def gradient_descent(learning_rate, max_iterations, initial_x):
+x = initial_x
+x_history = [] 
+for_in range(max_iterations):
+gradient = 2 * (x + 3) 
+x = x - learning_rate * gradient # Update x using the gradient and␣
+↪learning rate
+x_history.append(x) # Append the current x to the history list
+return x, x_history
+# Parameters for Gradient Descent
+learning_rate = 0.1
+max_iterations = 1000
+initial_x = 2
+# Run Gradient Descent to find the local minimum
+local_minimum, x_history = gradient_descent(learning_rate, max_iterations,␣
+↪initial_x)
+print(f"Local Minimum at x = {local_minimum}")
+# Plot the graph to visualize the convergence
+x_values = np.linspace(-10, 10, 400) # Generate x values for the graph
+y_values = (x_values + 3)**2 # Calculate corresponding y values
+plt.plot(x_values, y_values, label='y = (x + 3)^2', color='blue')
+plt.scatter(x_history, [(x + 3)**2 for x in x_history], label='Gradient Descent␣
+↪Path', color='red', marker='x')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend()
+plt.title('Gradient Descent Convergence')
+plt.grid(True)
 
-df = pd.read_csv('diabetes.csv')
-X = df.drop('Outcome', axis=1)
-y = df['Outcome']
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-
-knn = KNeighborsClassifier(n_neighbors=5)
-knn.fit(X_train, y_train)
-y_pred = knn.predict(X_test)
-
-accuracy = accuracy_score(y_test, y_pred)
-error_rate = 1 - accuracy
-conf_matrix = confusion_matrix(y_test, y_pred)
-precision = precision_score(y_test, y_pred)
-recall = recall_score(y_test, y_pred)
-
-print("Accuracy Score:", accuracy)
-print("Error Rate:", error_rate)
-print("Confusion Matrix:")
-print(conf_matrix)
-print("Precision:", precision)
-print("Recall:", recall)
