@@ -1,3 +1,7 @@
+"Classify the email using the binary classification method. Email Spam detection has two states: a)
+Normal State - Not Spam, b) Abnormal State - Spam. Use K-Nearest Neighbors and Support Vector
+Machine for classification. Analyze their performance"
+
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
