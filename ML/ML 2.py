@@ -2,45 +2,44 @@
 Normal State - Not Spam, b) Abnormal State - Spam. Use K-Nearest Neighbors and Support Vector
 Machine for classification. Analyze their performance"
 
+
 import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-
-df = pd.read_csv('spam_email_data.csv')
-df['label'] = df['label'].map({'spam': 1, 'not spam': 0})
-
-vectorizer = CountVectorizer(stop_words='english')
-X = vectorizer.fit_transform(df['email'])
-y = df['label']
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-
-knn_model = KNeighborsClassifier(n_neighbors=5)
+from sklearn.model_selection import train test_split from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC from sklearn.metrics import accuracy_score, classification_report
+data= pd.read_csv("emails.csv")
+#take new line in jupyter
+data.drop(['Email No.'], axis-1, inplace=True)
+#take new line in jupyter
+X= data.drop("Prediction", axis=1)
+y= data["Prediction"] Target variable print("Features: ",X) print("Target: ",y)
+print("Features:" ,X)
+print("Target:" ,y)
+#take new line in jupyter
+X_train, X_test, y_train, y_test train_test_split(X, y, test size=0.3, random_state=42)
+#take new line in jupyter
+knn_model = KNeighborsClassifier(n_neighbors=5) 
 knn_model.fit(X_train, y_train)
-y_pred_knn = knn_model.predict(X_test)
-
-svm_model = SVC(kernel='linear', C=1.0)
+svm_model = SVC()
 svm_model.fit(X_train, y_train)
-y_pred_svm = svm_model.predict(X_test)
-
-accuracy_knn = accuracy_score(y_test, y_pred_knn)
-accuracy_svm = accuracy_score(y_test, y_pred_svm)
-
-print("KNN Model Accuracy:", accuracy_knn)
-print("SVM Model Accuracy:", accuracy_svm)
-
-print("\nKNN Classification Report:")
-print(classification_report(y_test, y_pred_knn))
-
-print("\nSVM Classification Report:")
-print(classification_report(y_test, y_pred_svm))
-
-print("\nKNN Confusion Matrix:")
-print(confusion_matrix(y_test, y_pred_knn))
-
-print("\nSVM Confusion Matrix:")
-print(confusion_matrix(y_test, y_pred_svm))
+#take new line in jupyter
+knn_predictions = knn_model.predict(X_test) 
+knn_accuracy accuracy_score(y_test, knn_predictions) 
+knn_report classification_report(y_test, knn_predictions)
+#take new line in jupyter
+print(knn_predictions)
+#take new line in jupyter
+print("K-Nearest Neighbors Accuracy:")
+print(knn_accuracy)
+print("K-Nearest Neighbors Classification Report:")
+print(knn_report)
+#take new line in jupyter
+svm_predictions = svm_model.predict(X_test)
+svm_accuracy = accuracy_score(y_test, svm_predictions)
+svm_report classification_report(y_test, svm_predictions)
+#take new line in jupyter
+ print(svm_predictions)
+#take new line in jupyter
+print("Support Vector Machine Accuracy:")
+print(svm_accuracy)
+print("Support Vector Machine Classification Report:")
+print(svm_report)
