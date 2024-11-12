@@ -1,3 +1,7 @@
+"Implement K-Nearest Neighbors algorithm on diabetes.cs dataset. Compute confusion matrix,
+accuracy, error rate, precision and recall on the given dataset."
+
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
