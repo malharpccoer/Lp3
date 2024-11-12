@@ -6,47 +6,78 @@ respective scores like R2, RMSE, etc."
 
 import pandas as pd
 import numpy as np
-import seaborn as sns
 import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_madel import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
-
-df = pd.read_csv('uber_data.csv')
-df.dropna(inplace=True)
-df['pickup_datetime'] = pd.to_datetime(df['pickup_datetime'])
-df['hour'] = df['pickup_datetime'].dt.hour
-df['day_of_week'] = df['pickup_datetime'].dt.dayofweek
-
-sns.boxplot(x=df['fare_amount'])
+from sklearn.metrics import r2_score, mean_squared_error
+data = pd.read_csv("Uber.csv")
+#take new line in jupyer
+data["pickup_datetime"] = pd.to_datetime(data["pickup_datetime"])
+missing_values = data.isnull().sum()
+print("Missing values in the dataset:")
+print(missing_values)
+data. dropna(inplace-True)
+missing_values = data.isnull().sum()
+print( "Missing values after handlin
+print(missing_values)
+sns.boxplot (x=data["fare_amount”])
+plt.show() 
+#take new line in jupyer 
+Ql = data["fare_amount"].quantile(@.25)
+Q3 = data["fare_amount"].quantile(@.75)
+TQR = Q3 - Ql
+threshold = 1.5
+lower_bound = Ql - threshold * IQR
+upper_bound = Q3 + threshold * IQR
+#take new line in jupyer            
+data_no_outliers = data{(data["fare_amount"] >= lower_bound) & (data["fare_amount"] <= upper_bound)]
+sns.boxplot (x=data_no_outliers["fare_amount" ])
 plt.show()
+ #take new line in jupyter
+data.plot(kind="box",subplots=True, layout=(7, 2), figsize=(15, 20))
+    #take new line in jupyter
+correlation_matrix = data.corr()
 
-corr_matrix = df.corr()
-sns.heatmap(corr_matrix, annot=True, cmap='coolwarm')
-plt.show()
+sns.heatmap(correlation_matrix, annot=True)
 
-X = df[['distance', 'hour', 'day_of_week']]
-y = df['fare_amount']
+pit. show()
+  #take new line in jupyter
+ 
+X = data[['pickup_longitude’, ‘pickup_latitude', “dropoff_longitude’, ‘dropoff_latitude', "passenger_count']]
+y = data['fare_amount'] 
+y
+ #take new line in jupyter
+ X_train, X_test, y_train, y_test = train_test_split(x, y, test_size-@.2, random_state=42)
+  #take new line in jupyter
+ lr_model = LinearRegression()
+lr_model.fit(X_train, y_train)
+ #take new line in jupyter
+rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
+rf_model.fit(x_train, y_train)  
+ #take new line in jupyter
+ y_pred_lr = lr_model.predict(x_test)
+y_pred_ir
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+print("Linear Model:”,y_pred_lr)
+y_pred_rf = rf_model.predict(x_test)
 
-lin_reg = LinearRegression()
-lin_reg.fit(X_train, y_train)
-y_pred_lin = lin_reg.predict(X_test)
-
-rf_reg = RandomForestRegressor(n_estimators=100, random_state=42)
-rf_reg.fit(X_train, y_train)
-y_pred_rf = rf_reg.predict(X_test)
-
-r2_lin = r2_score(y_test, y_pred_lin)
-rmse_lin = np.sqrt(mean_squared_error(y_test, y_pred_lin))
-
-r2_rf = r2_score(y_test, y_pred_rf)
-rmse_rf = np.sqrt(mean_squared_error(y_test, y_pred_rf))
-
-print("Linear Regression R2:", r2_lin)
-print("Linear Regression RMSE:", rmse_lin)
-
+print("Random Forest Model:", y_pred_rf)
+   #take new line in jupyter
+r2_lr = r2_score(y_test, y_pred_ir)
+rmse_lr = np.sqrt(mean_squared_error(y test, y_pred_lr))
+    #take new line in jupyter
+print("Linear Regression - R2:", r2_lr)
+print("Linear Regression - RMSE:", rmse_lr)
+ #take new line in jupyter
+ r2_rf = r2_score(y_test, y_pred_rf)
+rmse_rf = np.sqrt(mean_squared_error(y test, y_pred_rf))
 print("Random Forest Regression R2:", r2_rf)
-print("Random Forest Regression RMSE:", rmse_rf)
+print("Random Forest Regression RMSE:",rmse_rf)
+       #end
+       
+      
+ 
+                 
+                
