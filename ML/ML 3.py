@@ -10,39 +10,95 @@ Age, Tenure, Balance, etc. Perform following steps:
 5. Print the accuracy score and confusion matrix (5 points)."
 
 
-import pandas as pd
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+plt.style.use('dark_background' )
+#take new line in jupyter
+df = pd.read_csv(' /kaggle/input/bank-customer-churn-modeling/Churn_Modelling.csv')
+df.head()
+#take new line in jupyter
+df.shape
+#take new line in jupyter
+df.info()
+#take new line in jupyter
+df = df.drop(['RowNumber', 'Surname','CustomerId', 'EstimatedSalary'], axis = 1)
+df.head()
+#take new line in jupyter
+tenure_exited_no = df[df.Exited==@] .Tenure
+tenure_exited_yes = df[df.Exited==1].Tenure
+#take new line in jupyter
+plt.figure(figsize=(18,5))
+sns.histplot(tenure_exited_yes, color='pink', label='Exited: Yes’)
+sns.histplot(tenure_exited_no, color='purple', label='Exited: No', alpha = 0.4)
+plt.xlabel( ‘Tenure’ )
+plt.ylabel('Number of Customers’ )
+plt.title('Distribution of Tenure’)
+plt.legend()
+plt.show()
+ #take new line in jupyter
+numOfProducts_exited_yes = df[df.Exited==1] .NumOfProducts
+numOfProducts_exited_no = df[df.Exited==0] .NumOfProducts 
+ #take new line in jupyter
+plt.figure(figsize=(10,5))
+sns.histplot(num0fProducts_exited_yes, color='red', label='Exited: Yes')
+sns.histplot(numOfProducts_exited_no, color='purple', label='Exited: No', alpha = 0.4)
+plt.xlabel('Number of Products’)
+plt.ylabel('Number of Customers’)
+plt.title('Distribution of Products’ )
+plt.legend()
+plt.show()  
+#take new line in jupyter
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+df.Geography = le.fit_transform(df.Geography)
+df.Gender = le.fit_transform(df.Gender)
+#take new line in jupyter
+ df.head()        
+#take new line in jupyter   
+from sklearn.preprocessing import MinMaxScaler
+sclr = MinMaxScaler()
+df.CreditScore = sclr.fit_transform(df[['CreditScore' ]])
+df.Age = sclr.fit_transform(df[['Age']])
+df .Balance = sclr.fit_transform(df[[' Balance’ ]])   
+#take new line in jupyter
+ df.head()
+ #take new line in jupyter
+x = df.drop(['Exited'], axis=1)
+y = df.Exited   
+  #take new line in jupyter  
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import accuracy_score, confusion_matrix
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+  #take new line in jupyter    
 import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
-
-df = pd.read_csv('bank_customer_data.csv')
-X = df.drop(['CustomerId', 'Surname', 'Exited'], axis=1)
-X = pd.get_dummies(X, columns=['Geography', 'Gender'], drop_first=True)
-y = df['Exited']
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-
-scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
-
-model = Sequential()
-model.add(Dense(64, input_dim=X_train.shape[1], activation='relu'))
-model.add(Dense(32, activation='relu'))
-model.add(Dense(1, activation='sigmoid'))
-
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-model.fit(X_train, y_train, epochs=50, batch_size=32, verbose=0)
-
-y_pred = (model.predict(X_test) > 0.5).astype(int)
-
-accuracy = accuracy_score(y_test, y_pred)
-conf_matrix = confusion_matrix(y_test, y_pred)
-
-print("Accuracy Score:", accuracy)
-print("Confusion Matrix:")
-print(conf_matrix)
+from tensorflow import keras
+from tensorflow.keras.layers import Dense, Flatten
+ #take new line in jupyter 
+ model.evaluate(x_test,y_test)
+  #take new line in jupyt
+ predictions = model.predict(x_test)
+predictions
+  #take new line in jupyter   
+y-pred = []
+for i in predictions:
+if i> 0.5:
+y_pred.append(1)
+else:
+y_pred.append(0)
+  #take new line in jupyter
+y_pred[0:5]
+  #take new line in jupyter
+from sklearn.metrics import confusion_matrix, classification_report
+cr = classification_report(y_test, y_pred)
+print(cr)
+  #take new line in jupyter
+ cm = confusion_matrix(y_test, y_pred)
+cm
+ #take new line in jupyter
+plt.figure(figsize=(5,4))
+sns.heatmap(cm, annot=True, fmt='d')
+plt.xlabel( ‘Predicted’ )
+plt.ylabel( ‘Truth’ )                                 
+  #take new line in jupyter                                 
+                                 
