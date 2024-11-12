@@ -1,7 +1,7 @@
 """Create your own wallet using Metamask for crypto transaction """
 
 
-// SPDX-License-Identifier: GPL-3.0
+#SPDX-License-Identifier: GPL-3.0
 
 pragma solidity >=0.7.0 <0.9.0;
 
@@ -14,14 +14,14 @@ contract Bank {
     }
 
     function deposit(uint amount) public payable {
-        // require(msg.value == amount);
+        #require(msg.value == amount);
         balances[msg.sender] += amount;
     }
 
     function withdraw(uint amount) public payable {
         require(amount <= balances[msg.sender]);
         balances[msg.sender] -= amount;
-        // msg.sender.transfer(amount);
+        #msg.sender.transfer(amount);
     }
 
 }
