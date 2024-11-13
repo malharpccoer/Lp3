@@ -1,0 +1,61 @@
+1. Data Preprocessing
+Data preprocessing is a crucial initial step in data analysis and machine learning pipelines that prepares raw data for modeling. Key steps include:
+
+Data Cleaning: Identifies and corrects issues such as missing or inconsistent data. Methods include filling missing values (imputation) with mean, median, or mode, or removing incomplete rows.
+Data Transformation: Converts data into an appropriate format. This may involve normalization (scaling data between 0 and 1) or standardization (scaling data to have a mean of 0 and standard deviation of 1), which helps algorithms converge faster and perform better.
+Encoding Categorical Data: Converts non-numeric data into numerical formats using label encoding or one-hot encoding.
+Feature Scaling: Ensures that features are on a similar scale to improve algorithm performance.
+Feature Selection: Selects the most relevant features to reduce the dataset's dimensionality and enhance model performance.
+2. Binary Classification
+Binary classification is a type of classification task that involves categorizing data into one of two classes, often labeled as 0 and 1 (e.g., spam vs. not spam). Common aspects include:
+
+Algorithms: Many algorithms can perform binary classification, such as logistic regression, support vector machines (SVM), and decision trees.
+Evaluation Metrics:
+Accuracy: The ratio of correctly predicted instances to the total number of instances.
+Precision: The ratio of true positive predictions to the total positive predictions, useful for minimizing false positives.
+Recall (Sensitivity): The ratio of true positive predictions to the total actual positives, important for minimizing false negatives.
+F1 Score: The harmonic mean of precision and recall, balancing both for more comprehensive performance evaluation.
+Decision Boundary: The line or surface that separates the classes based on feature values.
+3. K-Nearest Neighbours (K-NN)
+K-Nearest Neighbours is a non-parametric, instance-based learning algorithm used for both classification and regression. Key characteristics include:
+
+Concept: Classifies a data point based on the majority label of its 
+𝑘
+k nearest neighbors in the feature space.
+Distance Metrics: Uses distance measures such as Euclidean, Manhattan, or Minkowski to determine the nearest neighbors.
+Value of 
+𝑘
+k: Choosing 
+𝑘
+k is important as it affects model performance:
+A smaller 
+𝑘
+k can be sensitive to noise and lead to overfitting.
+A larger 
+𝑘
+k provides smoother decision boundaries but may underfit the data.
+Advantages: Simple to understand and implement, no training phase required.
+Disadvantages: Computationally intensive for large datasets, requires scaling features for accurate distance measurement.
+4. Support Vector Machine (SVM)
+Support Vector Machine is a supervised learning algorithm used for classification and regression. It works by finding the optimal hyperplane that best separates the data into different classes. Key concepts include:
+
+Hyperplane: A decision boundary that separates data points into classes. In a two-dimensional space, it's a line; in higher dimensions, it becomes a plane or hyperplane.
+Support Vectors: The data points closest to the hyperplane that influence its position. These points are critical for defining the optimal boundary.
+Kernel Trick: SVMs use kernels to transform data into higher dimensions when data is not linearly separable. Common kernels include:
+Linear Kernel: Used for linearly separable data.
+Polynomial Kernel: Maps data into polynomial spaces.
+Radial Basis Function (RBF): Maps data into an infinite-dimensional space for non-linear separation.
+Advantages: Effective for high-dimensional spaces, robust to overfitting when using an appropriate kernel.
+Disadvantages: Can be computationally expensive, and choosing the right kernel and parameters requires expertise.
+5. Train, Test and Split Procedure
+The train-test split procedure is a method used to evaluate the performance of a machine learning model by splitting the dataset into training and testing subsets. Key points include:
+
+Purpose: The training set is used to train the model, while the test set is used to evaluate its performance on unseen data.
+Typical Split Ratio: Common splits are 70/30 or 80/20 for training and testing, respectively.
+Stratified Splitting: Ensures that each class is proportionally represented in both the training and test sets, useful for imbalanced datasets.
+Validation Set: Sometimes, a separate validation set is used alongside the training and test sets for tuning hyperparameters, which helps prevent overfitting.
+Cross-Validation: An alternative to a single train-test split, where the data is divided into 
+𝑘
+k folds, and the model is trained and tested 
+𝑘
+k times, each with a different train-test split. This method provides a more robust evaluation.
