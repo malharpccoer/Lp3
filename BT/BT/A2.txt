@@ -1,0 +1,48 @@
+1. Basic Knowledge of Cryptocurrency
+Cryptocurrency is a digital asset that serves as a medium of exchange using cryptographic methods to secure transactions, control the creation of new units, and verify asset transfers. Key points include:
+
+Decentralized Nature: Unlike traditional currencies controlled by central banks, cryptocurrencies operate on decentralized networks powered by blockchain technology.
+Blockchain Technology: A distributed ledger that records all transactions across a network of computers, ensuring transparency and security.
+Popular Cryptocurrencies:
+Bitcoin (BTC): The first and most well-known cryptocurrency, introduced by an anonymous person or group under the name Satoshi Nakamoto.
+Ethereum (ETH): Known for supporting smart contracts and decentralized applications.
+Security Features: Cryptography ensures the integrity and security of transactions.
+Wallets and Keys:
+Public Key: Similar to an account number, used to receive funds.
+Private Key: Secret key used to sign transactions and access funds.
+Mining and Consensus Mechanisms:
+Mining: The process of validating transactions and adding them to the blockchain, often rewarded with new coins.
+Proof of Work (PoW) and Proof of Stake (PoS): Common consensus mechanisms to secure the network and validate transactions.
+2. Basic Knowledge of Distributed Computing Concept
+Distributed computing involves multiple computer systems working together to solve a common problem or perform a shared task. Key concepts include:
+
+Definition: A computing paradigm where processing power, data, or services are distributed across multiple nodes in a network.
+Nodes: Individual computers or servers that contribute to the distributed system.
+Parallel Processing: Tasks are divided and processed concurrently by different nodes, enhancing efficiency and reducing processing time.
+Scalability: Distributed systems can scale horizontally by adding more nodes, which improves capacity and performance.
+Fault Tolerance: Systems remain operational even if some nodes fail, increasing reliability.
+Examples:
+Distributed Databases like MongoDB and Cassandra.
+Frameworks: Apache Hadoop and Apache Spark for handling big data.
+Applications: Used in cloud computing, data processing, scientific simulations, and cryptocurrency networks.
+3. Working of Blockchain
+Blockchain is the technology that powers cryptocurrencies and many other decentralized systems. It functions as an immutable, distributed ledger that records transactions in a secure and transparent manner. Here's how it works:
+
+Structure:
+Block: Each block contains a batch of transactions, a timestamp, a cryptographic hash of the previous block, and a unique identifier (hash).
+Chain: Blocks are linked sequentially, forming a continuous chain where each block references the previous one.
+Core Concepts:
+Decentralization: The blockchain ledger is maintained across a network of nodes, preventing central control.
+Consensus Mechanism: A method for validating new blocks and achieving agreement on the state of the blockchain:
+Proof of Work (PoW): Nodes solve complex mathematical problems to add a new block (used in Bitcoin).
+Proof of Stake (PoS): Validators are chosen to create new blocks based on their stake in the network (used in Ethereum 2.0).
+Transaction Process:
+Initiation: A user requests a transaction, which is broadcast to the network.
+Verification: Nodes validate the transaction using cryptographic methods.
+Block Formation: Validated transactions are bundled into a new block.
+Consensus and Addition: The new block is added to the chain through consensus.
+Immutability: Altering a block retroactively requires changing all subsequent blocks, making tampering practically impossible.
+Applications:
+Cryptocurrencies: Bitcoin, Ethereum, and others rely on blockchain for transaction records.
+Smart Contracts: Self-executing contracts with the terms directly written into code.
+Supply Chain: Enhances transparency and traceability.
